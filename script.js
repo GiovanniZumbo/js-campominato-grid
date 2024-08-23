@@ -29,7 +29,14 @@ function createCells() {
 
 // # EVENT HANDLING
 
+playButton.addEventListener('click', function () {
 
+    for (let i = 0; i < totalCells; i++) {
+        createCells();
+    }
+
+    playButton.classList.add('d-none');
+})
 
 // # PROCESSING
 

@@ -75,3 +75,7 @@ footer {
     line-height: 60px;
     padding: 0 30px;
 }
+
+.d-none {
+    display: none;
+}
