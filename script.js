@@ -8,6 +8,10 @@ Rimuoviamo le celle che abbiamo inserito nell'HTML in modo da generarle tramite 
 - Creo l'evento sul bottone
 - Richiamo la funzione con un ciclo for
 
+
+#MILESTONE 3
+In ogni cella, deve comparire il numero corrispondente, in ordine da 1 a 100;
+-Aggiungo nella funzione che la cella deve avere come content, i.
 */
 
 // # STAGING
@@ -19,9 +23,12 @@ const totalCells = rows * cols;
 const grid = document.getElementById('grid');
 const playButton = document.getElementById('playbtn');
 
+let content = '';
+
 function createCells() {
     const cell = document.createElement('div');
     cell.classList.add('cell');
+    cell.innerText = content;
     grid.append(cell);
 }
 
@@ -32,6 +39,7 @@ function createCells() {
 playButton.addEventListener('click', function () {
 
     for (let i = 0; i < totalCells; i++) {
+        content = i + 1;
         createCells();
     }
 
