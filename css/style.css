@@ -54,7 +54,7 @@ main {
     background-color: #80ffd4;
 }
 
-.grid {
+#grid {
     display: flex;
     flex-wrap: wrap;
     width: 600px;
@@ -63,7 +63,7 @@ main {
 }
 
 .cell {
-    flex-basis: calc(100% / 8);
+    flex-basis: calc(100% / 10);
     aspect-ratio: 1;
     border: 1px solid black;
 }
