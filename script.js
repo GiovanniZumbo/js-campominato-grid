@@ -12,7 +12,19 @@ Rimuoviamo le celle che abbiamo inserito nell'HTML in modo da generarle tramite 
 #MILESTONE 3
 In ogni cella, deve comparire il numero corrispondente, in ordine da 1 a 100;
 -Aggiungo nella funzione che la cella deve avere come content, i.
+
+#MILESTONE 4
+Al click sulla cella, stampiamo il numero della cella cliccata in console, poi coloriamo la cella d'azzurro!
+- creo una classe per il bg blue sul CSS
+- Creo un event listener sulla cella
+- Console log del contenuto
+- Aggiungo una classe "blue" sulla cella che si attiva al click
+
 */
+
+
+
+
 
 // # STAGING
 
@@ -23,13 +35,12 @@ const totalCells = rows * cols;
 const grid = document.getElementById('grid');
 const playButton = document.getElementById('playbtn');
 
-let content = '';
 
-function createCells() {
+function createCell(content) {
     const cell = document.createElement('div');
     cell.classList.add('cell');
-    cell.innerText = content;
-    grid.append(cell);
+    cell.append(content);
+    return cell;
 }
 
 // # DATA GATHERING
@@ -39,12 +50,18 @@ function createCells() {
 playButton.addEventListener('click', function () {
 
     for (let i = 0; i < totalCells; i++) {
-        content = i + 1;
-        createCells();
+        const cell = createCell(i + 1);
+        grid.appendChild(cell);
+
+        cell.addEventListener('click', function () {
+            cell.classList.toggle('clicked');
+            console.log(i + 1);
+        })
     }
 
     playButton.classList.add('d-none');
 })
+
 
 // # PROCESSING
 

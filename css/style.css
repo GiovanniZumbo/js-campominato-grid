@@ -24,6 +24,10 @@ img {
     max-width: 100%;
 }
 
+.clicked {
+    background-color: lightblue;
+}
+
 /* Header */
 
 header {
@@ -69,6 +73,7 @@ main {
     display: flex;
     justify-content: center;
     align-items: center;
+    cursor: pointer;
 }
 
 /* footer */
