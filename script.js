@@ -28,41 +28,81 @@ Al click sulla cella, stampiamo il numero della cella cliccata in console, poi c
 
 // # STAGING
 
-const rows = 10;
-const cols = 10;
-const totalCells = rows * cols;
-
 const grid = document.getElementById('grid');
 const playButton = document.getElementById('playbtn');
+const form = document.querySelector('form');
+const select = document.getElementById('difficulty');
 
 
-function createCell(content) {
+//@ FUNCTIONS
+
+// * Funzione per creare una cella
+function createCell(content, selectValue) {
     const cell = document.createElement('div');
-    cell.classList.add('cell');
-    cell.append(content);
+    cell.classList.add('cell', selectValue);
+    cell.innerText = content;
+
     return cell;
 }
+
+
+// * Funzione per iniziare una nuova partita
+function startGame(e) {
+    //# Staging
+
+    e.preventDefault();
+
+    grid.innerHTML = ''; // svuoto la griglia
+
+    playButton.innerText = 'Restart game'; // Cambio il testo del bottone
+
+    const selectValue = select.value;
+    let rows;
+    let cols;
+
+    switch (selectValue) {
+        case ('easy'):
+            rows = 10;
+            cols = 10;
+            break;
+        case ('medium'):
+            rows = 9;
+            cols = 9;
+            break;
+        case ('hard'):
+            rows = 7;
+            cols = 7;
+            break;
+    }
+
+    const totalCells = rows * cols;
+
+    // Genero le celle
+
+    for (let i = 0; i < totalCells; i++) {
+
+        const cell = createCell(i + 1, selectValue);
+
+        // Al click:
+        cell.addEventListener('click', function () {
+            console.log(parseInt(cell.innerText));
+            cell.classList.add('clicked');
+        });
+
+        grid.appendChild(cell);
+    }
+}
+
+form.addEventListener('submit', startGame);
 
 // # DATA GATHERING
 
 // # EVENT HANDLING
 
-playButton.addEventListener('click', function () {
-
-    for (let i = 0; i < totalCells; i++) {
-        const cell = createCell(i + 1);
-        grid.appendChild(cell);
-
-        cell.addEventListener('click', function () {
-            cell.classList.toggle('clicked');
-            console.log(i + 1);
-        })
-    }
-
-    playButton.classList.add('d-none');
-})
-
-
 // # PROCESSING
 
 // # OUTPUT 
+
+
+/* Quando viene selezionata una difficoltà deve cambiare il numero di righe e di colonne della griglia*/
+
